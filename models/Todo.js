@@ -10,9 +10,14 @@ const TodoSchema = new mongoose.Schema({
   completed: {
     type: Boolean,
     default: false
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 }, {
-  timestamps: true  // otomatis tambah createdAt & updatedAt
+  timestamps: true
 });
 
 module.exports = mongoose.model('Todo', TodoSchema);

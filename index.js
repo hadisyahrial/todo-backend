@@ -6,13 +6,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const todoRoutes = require('./routers/todos'); // routes -> routers
+const authRoutes = require('./routers/auth');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // Daftarkan routes
-app.use('/api/todos', todoRoutes); // tambahkan ini
+app.use('/api/todos', todoRoutes); 
+app.use('/api/auth', authRoutes);
 
 // Koneksi ke MongoDB Atlas pakai variabel dari .env
 mongoose.connect(process.env.MONGO_URI)
